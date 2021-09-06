@@ -1,0 +1,76 @@
+@import '../assets/scss/variables';
+
+#auth-form-section {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-size: 12px;
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px;
+        #inputs{
+            margin-bottom: 10px;
+        }
+        .input-field{
+            margin: 0;
+            margin-right: 10px;
+            height: 20px;
+            input{
+                height: 20px;
+                background-color: $bg-main;
+                color: white;
+                border: none;
+            }
+            input::placeholder{
+                color: white;
+            }
+        }
+        button{
+            margin-top: 10px;
+            padding: 0 20px;
+            background-color: $bg-yellow;
+            color: $bg-light;
+            height: 20px;
+            border: none;
+            margin: 0;
+        }
+    }
+    #username{
+        padding-right: 6px;
+    }
+    #auth-redirect{
+        color: $bg-main;
+        background: none;
+        border: none;
+        text-decoration: underline;
+    }
+}
+.c-pointer{
+    cursor: pointer;
+}
+
+#modal{
+    background-color: $bg-main;
+    padding: 10px 10px 5px;
+    border-radius: 10px;
+    .modal-content{
+        border: none;
+        border-radius: 0;
+        background-color: $bg-main;
+    }
+    .modal-body{
+        border-radius: 10px;
+        background-color: $bg-light;
+    }
+    .modal-footer{
+        border: none;
+        padding: 3px 0;
+        button{
+            background-color: $bg-light;
+            color: black;
+            font-size: 10px;
+        }
+    }
+}

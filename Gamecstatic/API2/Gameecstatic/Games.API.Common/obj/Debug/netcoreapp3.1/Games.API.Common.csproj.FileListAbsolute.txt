@@ -1,0 +1,13 @@
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\bin\Debug\netcoreapp3.1\Games.API.Common.deps.json
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\bin\Debug\netcoreapp3.1\Games.API.Common.runtimeconfig.json
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\bin\Debug\netcoreapp3.1\Games.API.Common.runtimeconfig.dev.json
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\bin\Debug\netcoreapp3.1\Games.API.Common.dll
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\bin\Debug\netcoreapp3.1\Games.API.Common.pdb
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\obj\Debug\netcoreapp3.1\Games.API.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\obj\Debug\netcoreapp3.1\Games.API.Common.AssemblyInfoInputs.cache
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\obj\Debug\netcoreapp3.1\Games.API.Common.AssemblyInfo.cs
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\obj\Debug\netcoreapp3.1\Games.API.Common.csproj.CoreCompileInputs.cache
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\obj\Debug\netcoreapp3.1\Games.API.Common.dll
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\obj\Debug\netcoreapp3.1\Games.API.Common.pdb
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\obj\Debug\netcoreapp3.1\Games.API.Common.genruntimeconfig.cache
+C:\Users\Dogukan\Documents\GitHub\Gameecstatic\Gamecstatic\API2\Gameecstatic\Games.API.Common\obj\Debug\netcoreapp3.1\Games.API.Common.csproj.AssemblyReference.cache

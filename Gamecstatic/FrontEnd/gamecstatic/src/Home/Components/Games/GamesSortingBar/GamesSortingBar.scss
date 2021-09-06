@@ -1,0 +1,57 @@
+@import '../../../../assets/scss/variables';
+
+#games-sorting-main-container{
+    margin: 0 20px;
+    .card{
+        background: none!important;
+        border: none;
+        .collapse{
+            background-color: $bg-main;
+        }
+        .card-header{
+            padding: 0;
+            background: none!important;
+            border-bottom: none;
+            button{
+                padding: 0;
+            }
+        }
+        svg{
+            color: $bg-main;
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+#games-sorting-bar{
+    color: $bg-main;
+    .basic-multi-select{
+        width: 15%;
+        .select__indicators{
+            height: 100%;
+        }
+        .select__value-container{
+            padding: 0;
+        }
+    }
+    #game-search{
+        width: 15%;
+        input{
+            border-radius: 5px;
+            border: none;
+            height: 35px;
+            padding-left: 10px;
+        }
+        
+    }
+    #game-sort{
+        width: 15%;
+        height: 35px;
+        select{
+            border-radius: 5px;
+            border: none;
+            padding-left: 10px;
+        }
+    }
+}

@@ -1,78 +1,69 @@
-import React, { Component } from 'react'
-import axios from 'axios';
+import React, { useEffect,useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import { FileUpload } from './FileUpload/FileUpload';
+import { uploadGame,fetchTags,fetchCategories } from "../state/action-creator/games";
+import GameMultiSelect from '../Home/Components/Games/GamesSortingBar/GameMultiSelect';
+import Spinner from './Spinner';
+import './UploadGame.scss'; 
 
-const API_URL = process.env.REACT_APP_URL+"game/";
-
-export class UploadGame extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            uploading: false,
-            file: null,
-            image: null,
-            name : "",
-            description: ""
-          }
-    }
-    postSubmission = () => {
-      let data = {Data : this.state.file}
-      axios.post( `${API_URL}`, data)
-    }
-
-    handleSubmit = e => {
-      e.preventDefault();
-      this.setState({uploading:true});
-      const { file,image,name,description } = this.state;
-      let data = {GameZip : file.file,ImageFile:image.file,Name:name,Description:description};
-      axios.post( `${API_URL}`, data)
-      .then(this.setState({uploading:false}))
-    }
-
-    stateUpdateFromKey = (key,value) =>{
-      switch (key) {
-        case "name":
-          this.setState({name : value})
-          break;
-        case "description":
-          this.setState({description : value})
-          break;
-        case "file":
-          this.setState({file : value})
-          break;
-        case "image":
-          this.setState({image : value})
-          break;
-      
-        default:
-          break;
-      }
-    }
-
-    handleChange = e => {
-      this.stateUpdateFromKey(e.target.id,e.target.value)
-    }
+export function UploadGame(){
+  const user = useSelector(state => state.authReducer.user)
+  const dispatch = useDispatch()
+  const [tags, setTags] = useState([])
+  const [categories, setCategories] = useState([])
+  useEffect(() => {
+        dispatch(fetchTags()).then(res => setTags(res.data)).catch(err => console.log(err))
+        dispatch(fetchCategories()).then(res => setCategories(res.data)).catch(err => console.log(err))
+  }, [dispatch])
+  const [uploading, setUploading] = useState(false);
+  const [name, setName] = useState("");
+  const [height, setHeight] = useState("");
+  const [width, setWidth] = useState("");
+  const [description, setDescription] = useState("");
+  const [file, setFile] = useState(null);
+  const [image, setImage] = useState(null);
+  const [gameHtml, setGameHtml] = useState(null);
+  const [selectedCategories, setSelectedCategories] = useState([])
+  const [selectedTags, setSelectedTags] = useState([])
   
-  render() {
-    const { uploading, file,image,name,description } = this.state
+  let handleSubmit = e => {
+    e.preventDefault();
+    let readyForSubmit = file !==null && file.file !==null && image !==null && image.file !==null && gameHtml !== null && gameHtml.file !==null && width!=="" && height!=="" && name!=="" && description !== "" && selectedTags.length > 0;
+    if(!readyForSubmit) return;
+    setUploading(true);
+    let data = {ZippedFile : file.file,Image:image.file,GameHtml:gameHtml.file,Name:name,Description:description,UserId:user.id,TagIds:selectedTags,CategoryIds:selectedCategories};
+    
+    dispatch(uploadGame(data))
+    .then(data => console.log("done"))
+    .catch(err => console.log(err))
+    .then(data => setUploading(false))
+  }
+  let readyForSubmit = file !==null && file.file !==null && image !==null && image.file !==null && gameHtml !== null && gameHtml.file !==null && width!=="" && height!=="" && name!=="" && description !== "" && selectedTags.length > 0;
+  let buttonDeactive = readyForSubmit ? "" : "deactive";
     return (
-      <form onSubmit={this.handleSubmit} className="d-flex justify-content-center">
-        <div className="p-5 d-flex flex-column w-50">
-          <h3>Submit an HTML 5 Game</h3>
+      <form id="upload-form" onSubmit={handleSubmit} className="d-flex flex-column align-items-center justify-content-center">
+        <h3>Submit an HTML 5 Game</h3>
+        <div id="form-container" className="d-flex flex-column w-50">
           <div className="d-flex flex-column">
-            <label>Game Name</label>
-            <input id="name" value={name} onChange={this.handleChange} type="text"></input>
-            <label>Game Description</label>
-            <textarea id="description" value={description} onChange={this.handleChange} maxLength="300"/>
+            <input placeholder="Game Name" id="name" value={name} onChange={(e) => setName(e.target.value)} type="text"></input>
+            <textarea placeholder="Game Description" id="description" value={description} onChange={(e) => setDescription(e.target.value)} maxLength="300"/>
+            <GameMultiSelect onChange={(v)=>setSelectedCategories(v)} placeholder="Select Categories" values={categories}/>
+            <GameMultiSelect onChange={(v)=>setSelectedTags(v)} placeholder="Select Tags" values={tags}/>
             <label>Game Image</label>
-            <FileUpload setFile={(val) => this.stateUpdateFromKey("image",val)}/>
+            <FileUpload accept="image/*" setFile={(val) => setImage(val)}/>
             {image !== null ? <img src={image.file}/> : ""}
           </div>
           <label>Game Attachment</label>
-          <FileUpload setFile={(val) => this.stateUpdateFromKey("file",val)}/>
-          <input type="submit" value="Upload Game" />
+          <FileUpload accept=".zip" setFile={(val) => setFile(val)}/>
+          <label>Game HTML</label>
+          <FileUpload accept=".html" setFile={(val) => setGameHtml(val)}/>
+          <div className="d-flex justify-content-between">
+            <input className="w-40" placeholder="Game Width (px)" value={width} onChange={(e) => setWidth(e.target.value)} type="text"></input>
+            <input className="w-40" placeholder="Game Height (px)" value={height} onChange={(e) => setHeight(e.target.value)} type="text"></input>
+          </div>
+          <input className={buttonDeactive} type="submit" value="Upload Game" />
         </div>
+        {uploading ? <Spinner /> : ""}
       </form>
     )
-  }
 }

@@ -1,0 +1,51 @@
+@import "../assets/scss/variables";
+
+#upload-form{
+    h3{
+        color: $bg-yellow;
+    }
+    .w-40{
+        width: 40%;
+    }
+    margin: 20px 0;
+    #form-container{
+        background-color: $bg-main;
+        padding: 20px;
+        .deactive{
+            opacity: 0.2;
+            cursor: default;
+        }
+        .buttons{
+            color: white;
+        }
+        label{
+            color: white;
+        }
+        input{
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        input[type=text]{
+            padding-left: 10px;
+        }
+        input[type=submit]{
+            background-color: $bg-yellow;
+            color: white;
+            width: 30%;
+            align-self: center;
+        }
+        textarea{
+            margin-bottom: 10px;
+            border-radius: 5px;
+            padding-left: 10px;
+            border: none;
+        }
+        .basic-multi-select{
+            margin-bottom: 10px;
+        }
+        img{
+            width: 100px;
+        }
+    }
+}

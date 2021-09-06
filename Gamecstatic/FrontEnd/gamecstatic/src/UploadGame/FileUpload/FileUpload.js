@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Spinner from '../../Spinner'
 import File from './FileUploadComponents/File'
 import FileButton from './FileUploadComponents/FileButton'
 
@@ -7,7 +6,6 @@ export class FileUpload extends Component{
     constructor(props){
         super(props);
         this.state = {
-            uploading: false,
             file: null,
             fileName : ""
           }
@@ -30,10 +28,9 @@ export class FileUpload extends Component{
         });
     }
   onChange = e => {
-    this.setState({ uploading: true })
     this.readFileDataAsBase64(e)
         .then(res=>{
-          this.setState({ uploading: false, file:res, fileName:e.target.files[0].name })
+          this.setState({ file:res, fileName:e.target.files[0].name })
           this.props.setFile({file:res});
         })
   }
@@ -50,12 +47,10 @@ export class FileUpload extends Component{
     const { uploading, file,fileName } = this.state
     const content = () => {
       switch(true) {
-        case uploading:
-          return <Spinner />
         case file !== null:
           return <File file={fileName} removeFile={this.removeFile} />
         default:
-          return <FileButton onChange={this.onChange} />
+          return <FileButton accept={this.props.accept} onChange={this.onChange} />
       }
     }
 

@@ -1,0 +1,25 @@
+@import '../../../../assets/scss/variables';
+
+#pagination-container{
+    width: 100%;
+    padding: 20px;
+    background-color: none;
+    justify-content: center;
+    align-items: center;
+    .pagination-element{
+        padding: 0 5px;
+        margin: 0 10px;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+    }
+    .deactive{
+        cursor: default;
+        opacity: 0.2;
+    }
+    .active{
+        cursor: default;
+        background-color: $bg-main;
+        color: white;
+    }
+}

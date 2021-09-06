@@ -1,15 +1,50 @@
 import GamesFilter from "./GamesFilter/GamesFilter";
 import GamesSortingBar from "./GamesSortingBar/GamesSortingBar";
+import GameItem from "./GameItem";
+import { fetchGames } from "../../../state/action-creator/games";
+import { useDispatch } from 'react-redux';
+import {useEffect, useState} from 'react';
+import './Games.scss';
+import Pagination from "./Pagination/Pagination";
 
-function Games() {
-    const gamefilters = [{id:1,content:"content",onclick:null},{id:2,content:"content2",onclick:null}]
+
+function Games(props) {
+    const dispatch = useDispatch()
+    const [games, setGames] = useState({results:[],pageCount:0,pageSize:0})
+    const [state,setState] = useState({
+        SearchTerm : "",
+        SortBy : "rating",
+        Tags:[],
+        Categories:[],
+        Page: 1
+      });
+    useEffect(() => {
+         dispatch(fetchGames(state)).then(res => setGames(res)).catch(err => console.log(err))
+    }, [state])
+    const listedGames = games.results.map((game) =>
+      <GameItem key={game.id} game={game}/>
+    );
+    const onSearch = (SearchTerm) => {
+        setState({...state,SearchTerm,Page:1})
+    }
+    const onSort = (SortBy) => {
+        setState({...state,SortBy})
+    }
+    const onTagSort = (Tags) => {
+        setState({...state,Tags,Page:1})
+    }
+    const onCategorySort = (Categories) => {
+        setState({...state,Categories,Page:1})
+    }
+    const onPaginate = (Page) => {
+        setState({...state,Page})
+      }
     return (
-      <div className="d-flex p-5">
-        <GamesFilter gamefilters={gamefilters}/>
-        <div className="d-flex flex-column w-100">
-            <GamesSortingBar/>
+        <div id="games-main-container" className="d-flex flex-column w-100" >
+            <GamesSortingBar onSearch={onSearch} onCategorySort={onCategorySort} onTagSort={onTagSort} onSort={onSort} tags={props.tags} categories={props.categories}/>
+            <div id="game-grid">{listedGames}</div>
+            <Pagination current={state.Page} pageSize={games.pageSize} pageCount={games.pageCount} onPaginate={onPaginate} />
         </div>
-      </div>
     );
 }
 export default Games;

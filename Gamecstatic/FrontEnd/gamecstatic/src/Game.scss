@@ -1,0 +1,25 @@
+@import './assets/scss/variables';
+
+
+#game-container{
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    background-color: $bg-light;
+  }
+  
+  .responsive-iframe {
+    width: 600px;
+    height: 800px;
+  }
+
+  #game-info{
+    width: 100%;
+    height: 1000px;
+    background-color: red;
+  }
+}

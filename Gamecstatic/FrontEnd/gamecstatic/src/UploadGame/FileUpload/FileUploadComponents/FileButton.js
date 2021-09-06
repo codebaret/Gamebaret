@@ -6,6 +6,6 @@ export default props =>
     <div className='button'>
       <label htmlFor='single'>
       </label>
-      <input type='file' id='single' onChange={props.onChange} /> 
+      <input type='file' accept={props.accept} id='single' onChange={props.onChange} /> 
     </div>
   </div>

@@ -1,49 +1,44 @@
-//import html from "./EvadetheChaser/EvadetheChaser-master/index.html";
-import InnerHTML from 'dangerously-set-html-content'
-import axios from 'axios';
-import { useEffect,useState } from 'react';
-import JSZip from 'jszip';
-import FileSaver from 'file-saver';
+import React, { Component, Fragment } from 'react';
+import './Game.scss'
 
-const API_URL = process.env.REACT_APP_URL+"game/";
+const API_URL = process.env.REACT_APP_URL+"games/";
+const marginY = 100;
 
-const base64ToBuffer = (str) => {
-    str = window.atob(str); // creates a ASCII string
-    var buffer = new ArrayBuffer(str.length),
-        view = new Uint8Array(buffer);
-    for(var i = 0; i < str.length; i++){
-        view[i] = str.charCodeAt(i);
+export default class Game extends Component {
+    constructor(props) {
+        super(props);
+        console.log(props);
+        this.state = {
+            gameId: props.match.params.id,
+            adjustedIframe : false
+        };
+        this.gameUrl = API_URL + this.state.gameId + "/";
+        
     }
-    return buffer;
-}
 
-function Game() {
-    const [page, setPage] = useState(1);
-    console.log(API_URL)
-    useEffect(() => {
-        axios.get( `${API_URL}`)
-        .then(res=>{
-            return base64ToBuffer(res.data.Content);
-        })
-        .then(res=>{
-            var zip = new JSZip();
-            zip.loadAsync(res)
-            .then(function(zip) {
-                console.log(zip)
-            });
-        })
-        .then(res => console.log(res))
-        .catch(error => console.log(error));
-    }, [page]);
-    var file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
-    FileSaver.saveAs(file);
-    
-    return (
-        //<InnerHTML html={html} />
-        //<iframe src=".Game/index.html"></iframe>
-        <div></div>
-     );
-}
-  
+    onLoad = e => {
+        if(this.state.adjustedIframe) return;
+        let wantedHeight = window.innerHeight - 2 * marginY;
+        let scaleDown = Math.min(wantedHeight / e.target.clientHeight,1);
+        e.target.style.transform = "scale("+ scaleDown + ")";
+        let marginTop = ( e.target.clientHeight * (1 - scaleDown) ) / -2;
+        e.target.style.marginTop  = marginTop+"px";
+        e.target.style.marginBottom  = marginTop+"px";
+        this.setState({adjustedIframe:true,menuHeight:wantedHeight});
+    }
 
-export default Game; 
+    render() {
+        return (
+            <div id="game-container">
+                <div className="container">
+                    <h4 className>Game Name</h4>
+                    <iframe className="responsive-iframe" onLoad={this.onLoad} src={this.gameUrl} ></iframe>
+                </div>
+                <div id="game-info">
+                    WAZZUP
+                </div>
+            </div>
+            
+        );
+    }
+};

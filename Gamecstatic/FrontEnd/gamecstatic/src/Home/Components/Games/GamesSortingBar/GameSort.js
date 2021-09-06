@@ -4,7 +4,7 @@ export class GameSort extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sortBy: "Name"
+            sortBy: "Rating"
         };
     }
 
@@ -20,16 +20,12 @@ export class GameSort extends Component {
 
     render() {
         return (
-            <div className="d-flex">
-                <Fragment>
-                        <h6 className="mb-0 ml-2 mr-1">Sort By</h6>
-                        <select value={this.state.sortBy} onChange={evt => this.updateInputValue(evt)}>
-                            <option value="Name">Name</option>
-                            <option value="Description">Description</option>
-                            <option  value="Expiry">Expiry Date</option>
-                            <option value="Bid">Last Bid</option>
-                        </select>
-                </Fragment>
+            <div id="game-sort" className="d-flex">
+                <select className="w-100" value={this.state.sortBy} onChange={evt => this.updateInputValue(evt)}>
+                    <option value="Date-new">Newest Games</option>
+                    <option value="Date-old">Oldest Games</option>
+                    <option value="Rating">Best Rated Games</option>
+                </select>
             </div>
         );
     }

@@ -1,0 +1,50 @@
+@import '../../assets/scss/variables';
+
+#navigation-container{
+    background-color: $bg-main;
+    color: $bg-light;
+    height: 60px;
+    padding: 5px;
+    a{
+        color: white;
+    }
+    .w-10{
+        width: 10%;
+    }
+    #main-name{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        margin-left: 50px;
+        text-decoration: none;
+        img{
+            margin-right: 20px;
+            height: 100%;
+        }
+        h6{
+            margin: 0;
+            
+            font-size: 30px;
+            text-transform: none;
+            color: white;
+        }
+    }
+    #game-search{
+        width: 30%;
+        display: flex;
+        align-items: center;
+        input{
+            height: 70%;
+            width: 100%;
+        }
+    }
+    #auth-logos{
+        height: 100%;
+        svg{
+            cursor: pointer;
+            height: 50%;
+            width: auto;
+            margin-left: 10px;
+        }
+    }
+}
