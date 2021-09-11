@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { FileUpload } from './FileUpload/FileUpload';
 import { uploadGame,fetchTags,fetchCategories } from "../state/action-creator/games";
 import GameMultiSelect from '../Home/Components/Games/GamesSortingBar/GameMultiSelect';
@@ -9,6 +10,7 @@ import './UploadGame.scss';
 export function UploadGame(){
   const user = useSelector(state => state.authReducer.user)
   const dispatch = useDispatch()
+  const history = useHistory();
   const [tags, setTags] = useState([])
   const [categories, setCategories] = useState([])
   useEffect(() => {
@@ -31,10 +33,10 @@ export function UploadGame(){
     let readyForSubmit = file !==null && file.file !==null && image !==null && image.file !==null && gameHtml !== null && gameHtml.file !==null && width!=="" && height!=="" && name!=="" && description !== "" && selectedTags.length > 0;
     if(!readyForSubmit) return;
     setUploading(true);
-    let data = {ZippedFile : file.file,Image:image.file,GameHtml:gameHtml.file,Name:name,Description:description,UserId:user.id,TagIds:selectedTags,CategoryIds:selectedCategories};
+    let data = {ZippedFile : file.file,Image:image.file,GameHtml:gameHtml.file,Name:name,Description:description,UserId:user.id,TagIds:selectedTags,CategoryIds:selectedCategories,Width:width,Height:height};
     
     dispatch(uploadGame(data))
-    .then(data => console.log("done"))
+    .then(data => history.push("/") )
     .catch(err => console.log(err))
     .then(data => setUploading(false))
   }

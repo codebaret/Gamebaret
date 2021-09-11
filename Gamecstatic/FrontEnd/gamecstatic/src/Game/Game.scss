@@ -1,0 +1,66 @@
+@import '../assets/scss/variables';
+
+
+#game-container{
+  margin-top: 20px;
+  background-color: $bg-light;
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: $bg-light;
+  }
+
+  #game-info-header{
+    color: $bg-main;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    #game-header{
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 5px;
+      div{
+        margin-left: 20px;
+      }
+      h6{
+        margin: 0;
+        font-size: 25px;
+      }
+    }
+    p{
+      margin: 0;
+    }
+    .game-info-list-element{
+      background-color: $bg-main;
+      padding: 5px;
+      margin: 5px;
+      font-size: 10px;
+  }
+  .yellow{
+      background-color: $bg-yellow!important;
+  }
+  .light{
+      background-color: $bg-main!important;
+      color: white;
+  }
+  }
+
+
+  #game-info{
+    background-color: $bg-yellow!important;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    color: white;
+    width: 100%;
+  }
+}

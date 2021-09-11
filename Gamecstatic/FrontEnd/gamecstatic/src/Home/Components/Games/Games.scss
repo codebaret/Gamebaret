@@ -3,6 +3,7 @@
 #games-main-container{
     padding: 0 20px;
     margin-top: 15px;
+    height: calc(100% - 180px);
 }
 
 #game-list-item{
@@ -23,6 +24,13 @@
             color: white;
             padding: 10px;
             background-color:  rgba($bg-main, .2);
+            #game-header{
+                justify-content: space-between;
+                width: 100%;
+                h6{
+                    margin: 0;
+                }
+            }
             p{
                 margin: 0;
             }
@@ -35,7 +43,8 @@
             .game-info-list-element{
                 background-color: $bg-main;
                 padding: 2px;
-                margin: 5px;
+                margin-right: 5px;
+                margin-bottom: 5px;
                 font-size: 10px;
             }
             .yellow{

@@ -1,0 +1,32 @@
+@import '../../assets/scss/variables';
+
+#comments{
+    background-color: white;
+    border: 1px solid $bg-main;
+    border-bottom: none;
+    margin-bottom: 20px;
+    textarea{
+        border: none;
+        padding: 5px;
+        outline: none;
+    }
+    button{
+        border: none;
+        background-color: $bg-yellow;
+        color: white;
+        border-radius: 5px;
+    }
+    #comment{
+        border-bottom: 1px solid $bg-main;
+        p{
+            margin: 0;
+        }
+        div{
+            padding: 10px;
+        }
+        #comment-info{
+            color: $bg-yellow;
+            border-right: 1px solid $bg-main;
+        }
+    }
+}

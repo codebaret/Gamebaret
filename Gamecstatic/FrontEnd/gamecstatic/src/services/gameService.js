@@ -21,6 +21,16 @@ const GameService = {
                 throw err
             })
     },
+    fetchGameDetails: (id) => {
+        return API.get('/games/details/' + id)
+            .then(({ data }) => {
+                return data
+            })
+            .catch(err => {
+                console.log(err);
+                throw err
+            })
+    },
     fetchTags: () => {
         return API.get('/games/tags/')
             .then(({ data }) => {
@@ -36,6 +46,27 @@ const GameService = {
                 return data
             })
             .catch(err => {
+                throw err
+            })
+    },
+    comment: (data) => {
+        return API.post('/games/comment',data)
+            .then(({ data }) => {
+                return data
+            })
+            .catch(err => {
+                console.log(err);
+                throw err
+            })
+    },
+    rate: (data) => {
+        console.log(data);
+        return API.post('/games/rate',data)
+            .then(({ data }) => {
+                return data
+            })
+            .catch(err => {
+                console.log(err);
                 throw err
             })
     },

@@ -16,11 +16,14 @@
                 padding: 0;
             }
         }
-        svg{
-            color: $bg-main;
-            width: 30px;
-            height: 30px;
+        button{
+            svg{
+                color: $bg-main;
+                width: 30px;
+                height: 30px;
+            }
         }
+        
     }
 }
 
@@ -33,6 +36,7 @@
         }
         .select__value-container{
             padding: 0;
+            margin-left: 10px;
         }
     }
     #game-search{

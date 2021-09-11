@@ -24,6 +24,7 @@ function Games(props) {
     const listedGames = games.results.map((game) =>
       <GameItem key={game.id} game={game}/>
     );
+    const gameDisplay = listedGames.length !== 0 ? listedGames : <p>No Games Found</p>
     const onSearch = (SearchTerm) => {
         setState({...state,SearchTerm,Page:1})
     }
@@ -40,9 +41,9 @@ function Games(props) {
         setState({...state,Page})
       }
     return (
-        <div id="games-main-container" className="d-flex flex-column w-100" >
+        <div id="games-main-container" className="d-flex flex-column w-100 justify-content-center" >
             <GamesSortingBar onSearch={onSearch} onCategorySort={onCategorySort} onTagSort={onTagSort} onSort={onSort} tags={props.tags} categories={props.categories}/>
-            <div id="game-grid">{listedGames}</div>
+            <div id="game-grid">{gameDisplay}</div>
             <Pagination current={state.Page} pageSize={games.pageSize} pageCount={games.pageCount} onPaginate={onPaginate} />
         </div>
     );

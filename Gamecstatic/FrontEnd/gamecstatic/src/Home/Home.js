@@ -13,9 +13,7 @@ function Home() {
     }, [dispatch])
 
     return (
-      <div>
         <Games tags={tags} categories={categories} />
-      </div>
     );
 }
 export default Home;  

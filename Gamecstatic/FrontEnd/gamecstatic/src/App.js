@@ -2,7 +2,7 @@ import './App.scss';
 import Home from './Home/Home';
 import React from 'react';
 import {BrowserRouter,Route, Switch} from 'react-router-dom';
-import Game from './Game';
+import Game from './Game/Game';
 import {UploadGame} from './UploadGame/UploadGame';
 import ProtectedRoute from './Login/ProtectedRoute';
 import Navigation from './CommonElements/Navigation/Navigation';

@@ -1,4 +1,4 @@
-import { FETCH_GAMES, UPLOAD_GAME,FETCH_TAGS,FETCH_CATEGORIES } from '../type/index'
+import { FETCH_GAMES, UPLOAD_GAME,FETCH_TAGS,FETCH_CATEGORIES,FETCH_GAME_DETAILS, COMMENT, RATE } from '../type/index'
 
 const initialState = {
     games: [],
@@ -19,7 +19,7 @@ const gamesReducer = (state = initialState, action) => {
             }
         case UPLOAD_GAME :
             return {
-                ...state
+                state
             }
         case FETCH_TAGS:
             return {
@@ -30,6 +30,18 @@ const gamesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 categories: payload
+            }
+        case FETCH_GAME_DETAILS:
+            return {
+                state
+            }
+        case COMMENT:
+            return {
+                state
+            }
+        case RATE:
+            return {
+                state
             }
 
         default: {
