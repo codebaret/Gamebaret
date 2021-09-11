@@ -1,0 +1,14 @@
+﻿@Html.Raw(ViewBag.Html)
+<script>
+    document.addEventListener('keydown', function (e) {
+        if (
+            e.key === 'ArrowDown' ||
+            e.key === 'ArrowUp' ||
+            e.key === 'ArrowLeft' ||
+            e.key === 'ArrowRight' ||
+            e.key === ' '
+        ) {
+            e.preventDefault();
+        }
+    });
+</script>
