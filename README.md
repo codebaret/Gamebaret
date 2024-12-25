@@ -1,16 +1,16 @@
 # Gamebaret
 ## A game hosting platform
 
-The platform supports uploading of HTML5 games and playing of the uploaded games. Its objective is to bring game developers and game players together.
+The platform supports uploading and playing HTML5 games.
 
 - Multilayered .NET Core backend with layers: Database, Data Access, Business, REST API, Security
 - React - Redux frontend
 
 ## Features
 
-- Uploading HTML 5 games and hosting them
-- Playing the uploaded games
-- Commenting and starring of the games
+- Uploading HTML 5 games and storing them
+- Playing the games
+- Commenting/rating the games
 - User roles
 - Easy navigation of the games through tags and categories
 
